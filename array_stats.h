@@ -8,4 +8,6 @@ struct array_stats {
     long sum;
 };
 
+asmlinkage long sys_array_stats(struct array_stats *stats, long *data, long size);
+
 #endif
