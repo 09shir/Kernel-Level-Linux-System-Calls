@@ -3,7 +3,7 @@
 #include <linux/uaccess.h>
 #include "array_stats.h"
 
-asmlinkage long sys_array_stats(struct array_stats *stats, long *data, long size) {
+SYSCALL_DEFINE3(struct array_stats *stats, long *data, long size) {
     long min, max, sum, val;
     int i;
 
