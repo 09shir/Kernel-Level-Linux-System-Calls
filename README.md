@@ -30,10 +30,10 @@
 
 Add all files to corresponding locations
 
-Rebuild kernel (systemcall): ```~/cmpt300/linux-5.4.100/make -j4```
+Rebuild kernel (systemcall): ```cd ~/cmpt300/linux-5.4.100 && make -j4```
 
-Compile test applications: ```gcc -std=c99 -D _GNU_SOURCE -static array_stats_test.c -o array_stats_test```
+Compile test applications: ```cd ~/cmpt300/test-syscall && gcc -std=c99 -D _GNU_SOURCE -static array_stats_test.c -o array_stats_test```
 
-Boot QEMU and transfer test executable: ```scp -P 10022 array_stats_test ubuntu@localhost:```
+Boot QEMU and transfer test executable: ```cd ~/cmpt300/test-syscall && scp -P 10022 array_stats_test ubuntu@localhost:```
 
 Execute test applications in QEMU: ```./array_stats_test```
