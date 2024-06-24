@@ -359,6 +359,7 @@
 435	common	clone3			__x64_sys_clone3/ptregs
 436	common	cs300_test		__x64_sys_cs300_test
 437	common	array_stats		__x64_sys_array_stats
+438	common	process_ancestors	__x64_sys_process_ancestors
 
 #
 # x32-specific system call numbers start at 512 to avoid cache impact
