@@ -14,4 +14,8 @@ struct process_info {
 	long num_siblings;		/* # of sibling processes */
 };
 
+asmlinkage long sys_process_ancestors(struct process_info *info_array,
+                                      long size,
+                                      long *num_filled);
+
 #endif
