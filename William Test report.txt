@@ -1,0 +1,75 @@
+###########################################################################
+~/cmpt300/linux-5.4.100
+make -j4
+has a typo. should be 5.4.109
+
+
+comment:
+~/cmpt300/linux-5.4.100 has typo, it is suppose to be 5.4.109
+
+###########################################################################
+
+qemu-system-x86_64 -m 3G -drive file=./ubuntu-20.04-server-cloudimg-amd64.qcow2,format=qcow2 -smp 4 -nic user,hostfwd=tcp::10022-:22 -kernel ./linux-5.4.109/arch/x86/boot/bzImage -append "root=/dev/sda1 console=ttyS0,115200n8 console=tty0"
+
+cd ~/cmpt300/test-syscall 
+
+scp -P 10022 array_stats_test process_ancestors_test ubuntu@localhost:
+
+
+comment:
+the current directory is at ~/cmpt300/test-syscall. . qemu will no run.
+need to add 
+cd ~/cmpt300/
+before qemu
+
+###########################################################################
+test :
+The Array Statistics Syscall : success
+The Process Ancestors Syscall: succss
+
+###########################################################################
+patch:
+$$ cd ~/cmpt300/linux-5.4.109/
+$$ make clean
+  CLEAN   arch/x86/entry/vdso
+  CLEAN   arch/x86/kernel/cpu
+  CLEAN   arch/x86/kernel
+  CLEAN   arch/x86/realmode/rm
+  CLEAN   arch/x86/lib
+  CLEAN   certs
+  CLEAN   drivers/firmware/efi/libstub
+  CLEAN   drivers/scsi
+  CLEAN   drivers/tty/vt
+  CLEAN   drivers/video/logo
+  CLEAN   lib
+  CLEAN   net/wireless
+  CLEAN   security/selinux
+  CLEAN   usr
+  CLEAN   arch/x86/boot/compressed
+  CLEAN   arch/x86/boot
+  CLEAN   arch/x86/tools
+  CLEAN   modules.builtin.modinfo
+$$ make mrproper
+  CLEAN   scripts/basic
+  CLEAN   scripts/kconfig
+  CLEAN   scripts/mod
+  CLEAN   scripts/selinux/genheaders
+  CLEAN   scripts/selinux/mdp
+  CLEAN   scripts
+  CLEAN   include/config include/generated arch/x86/include/generated
+  CLEAN   .config .version Module.symvers
+$$ cd ~/cmpt300/
+$$ diff -rupN ~/cmpt300/Backup/linux-5.4.109/ ~/cmpt300/linux-5.4.109/ > patch.diff
+
+comment :
+in order to run line 62($$ diff -rupN ~/cmpt300/Backup/linux-5.4.109/ ~/cmpt300/linux-5.4.109/ > patch.diff)
+you must have saved a blank copy of the kernal under Backup folder.
+
+To proof the patch is correct, the easist way is to check the size of the patch. if the patch is correct, then it usually have the size of a few KB. if it is wrong ,then the size of the patch would be huge. a few MB
+
+I checked the size of the patch. 15 kb is within my expectation. hence I believe it is the correct patch. 
+
+###########################################################################
+
+
+
