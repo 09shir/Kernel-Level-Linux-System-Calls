@@ -44,7 +44,7 @@ cp ~/Downloads/CMPT-300-Assignment-2-master/syscall_64.tbl ~/cmpt300/linux-5.4.1
 Rebuild kernel (systemcall): 
 
 ```bash 
-cd ~/cmpt300/linux-5.4.100
+cd ~/cmpt300/linux-5.4.109
 
 make -j4
 ```
