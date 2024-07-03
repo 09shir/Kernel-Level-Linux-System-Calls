@@ -64,12 +64,21 @@ Boot QEMU and transfer test executable:
 ```bash
 cd ~/cmpt300/
 
-qemu-system-x86_64 -m 3G -drive file=./ubuntu-20.04-server-cloudimg-amd64.qcow2,format=qcow2 -smp 4 -nic user,hostfwd=tcp::10022-:22 -kernel ./linux-5.4.109/arch/x86/boot/bzImage -append "root=/dev/sda1 console=ttyS0,115200n8 console=tty0"
+qemu-system-x86_64 -m 3G \
+-drive file=./ubuntu-20.04-server-cloudimg-amd64.qcow2,format=qcow2 \
+-smp 4 \
+-nic user,hostfwd=tcp::10022-:22 \
+-nographic 
 
+```
+Open a new terminal to transfer file: 
+
+```bash
 cd ~/cmpt300/test-syscall 
 
 scp -P 10022 array_stats_test process_ancestors_test ubuntu@localhost:
 ```
+
 
 Execute test applications in QEMU: 
 
