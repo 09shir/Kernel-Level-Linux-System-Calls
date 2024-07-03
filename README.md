@@ -38,7 +38,7 @@ cp -r ~/Downloads/CMPT-300-Assignment-2-master/test-syscall ~/cmpt300/
 
 cp ~/Downloads/CMPT-300-Assignment-2-master/Makefile ~/cmpt300/linux-5.4.109
 
-cp ~/Downloads/CMPT-300-Assignment-2-master/syscall_64.tbl ~/cmpt300/linux-5.4.100/arch/x86/entry/syscalls/syscall_64.tbl
+cp ~/Downloads/CMPT-300-Assignment-2-master/syscall_64.tbl ~/cmpt300/linux-5.4.109/arch/x86/entry/syscalls/syscall_64.tbl
 ```
 
 Rebuild kernel (systemcall): 
