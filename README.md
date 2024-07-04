@@ -70,7 +70,6 @@ qemu-system-x86_64 -m 3G \
 -smp 4 \
 -nic user,hostfwd=tcp::10022-:22 \
 -kernel ./linux-5.4.109/arch/x86/boot/bzImage \
--nographic \
 -append "root=/dev/sda1 console=ttyS0,115200n8 console=tty0"
 
 ```
