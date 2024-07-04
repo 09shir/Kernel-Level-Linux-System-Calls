@@ -33,6 +33,7 @@ Replace all files to corresponding locations:
 > Download ZIP into ```~/Downloads``` &#8594; Extract
 ```bash
 cp -r ~/Downloads/CMPT-300-Assignment-2-master/cmpt300 ~/cmpt300/linux-5.4.109/
+cp -r ~/Downloads/CMPT-300-Assignment-2-master/cs300 ~/cmpt300/linux-5.4.109/
 
 cp -r ~/Downloads/CMPT-300-Assignment-2-master/test-syscall ~/cmpt300/
 
