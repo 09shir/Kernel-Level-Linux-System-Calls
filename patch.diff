@@ -1,34 +1,19 @@
-diff -rupN /home/will/cmpt300/Backup/linux-5.4.109/arch/x86/entry/syscalls/syscall_64.tbl /home/will/cmpt300/linux-5.4.109/arch/x86/entry/syscalls/syscall_64.tbl
---- /home/will/cmpt300/Backup/linux-5.4.109/arch/x86/entry/syscalls/syscall_64.tbl	2024-06-22 14:10:11.823670507 -0700
-+++ /home/will/cmpt300/linux-5.4.109/arch/x86/entry/syscalls/syscall_64.tbl	2024-06-23 23:15:14.442301290 -0700
-@@ -358,6 +358,9 @@
+diff -rupN /home/will/cmpt300/Backup/arch/x86/entry/syscalls/syscall_64.tbl /home/will/cmpt300/linux-5.4.109/arch/x86/entry/syscalls/syscall_64.tbl
+--- /home/will/cmpt300/Backup/arch/x86/entry/syscalls/syscall_64.tbl	2021-03-30 05:35:30.000000000 -0700
++++ /home/will/cmpt300/linux-5.4.109/arch/x86/entry/syscalls/syscall_64.tbl	2024-07-04 10:29:18.831754220 -0700
+@@ -357,6 +357,9 @@
+ 433	common	fspick			__x64_sys_fspick
  434	common	pidfd_open		__x64_sys_pidfd_open
  435	common	clone3			__x64_sys_clone3/ptregs
- 436	common	cs300_test		__x64_sys_cs300_test
++436	common	cs300_test		__x64_sys_cs300_test
 +437	common	array_stats		__x64_sys_array_stats
-+438	common	process_ancestors	__x64_sys_process_ancestors	
-+
++438	common	process_ancestors	__x64_sys_process_ancestors
+ 
  #
  # x32-specific system call numbers start at 512 to avoid cache impact
- # for native 64-bit operation. The __x32_compat_sys stubs are created
-diff -rupN /home/will/cmpt300/Backup/linux-5.4.109/arch/x86/entry/syscalls/syscall_64.tbl.rej /home/will/cmpt300/linux-5.4.109/arch/x86/entry/syscalls/syscall_64.tbl.rej
---- /home/will/cmpt300/Backup/linux-5.4.109/arch/x86/entry/syscalls/syscall_64.tbl.rej	1969-12-31 16:00:00.000000000 -0800
-+++ /home/will/cmpt300/linux-5.4.109/arch/x86/entry/syscalls/syscall_64.tbl.rej	2024-06-22 14:09:23.247877391 -0700
-@@ -0,0 +1,11 @@
-+--- linux-5.4.109/arch/x86/entry/syscalls/syscall_64.tbl	2021-03-30 05:35:30.000000000 -0700
-++++ arch/x86/entry/syscalls/syscall_64.tbl	2024-06-21 21:26:43.019322000 -0700
-+@@ -357,7 +357,7 @@
-+ 433	common	fspick			__x64_sys_fspick
-+ 434	common	pidfd_open		__x64_sys_pidfd_open
-+ 435	common	clone3			__x64_sys_clone3/ptregs
-+-
-++436	common	cs300_test		__x64_sys_cs300_test
-+ #
-+ # x32-specific system call numbers start at 512 to avoid cache impact
-+ # for native 64-bit operation. The __x32_compat_sys stubs are created
-diff -rupN /home/will/cmpt300/Backup/linux-5.4.109/cmpt300/array_stats.c /home/will/cmpt300/linux-5.4.109/cmpt300/array_stats.c
---- /home/will/cmpt300/Backup/linux-5.4.109/cmpt300/array_stats.c	1969-12-31 16:00:00.000000000 -0800
-+++ /home/will/cmpt300/linux-5.4.109/cmpt300/array_stats.c	2024-07-02 13:55:13.127509710 -0700
+diff -rupN /home/will/cmpt300/Backup/cmpt300/array_stats.c /home/will/cmpt300/linux-5.4.109/cmpt300/array_stats.c
+--- /home/will/cmpt300/Backup/cmpt300/array_stats.c	1969-12-31 16:00:00.000000000 -0800
++++ /home/will/cmpt300/linux-5.4.109/cmpt300/array_stats.c	2024-07-04 10:29:17.135695280 -0700
 @@ -0,0 +1,38 @@
 +#include <linux/kernel.h>
 +#include <linux/syscalls.h>
@@ -68,9 +53,9 @@ diff -rupN /home/will/cmpt300/Backup/linux-5.4.109/cmpt300/array_stats.c /home/w
 +
 +    return 0;
 +}
-diff -rupN /home/will/cmpt300/Backup/linux-5.4.109/cmpt300/array_stats.h /home/will/cmpt300/linux-5.4.109/cmpt300/array_stats.h
---- /home/will/cmpt300/Backup/linux-5.4.109/cmpt300/array_stats.h	1969-12-31 16:00:00.000000000 -0800
-+++ /home/will/cmpt300/linux-5.4.109/cmpt300/array_stats.h	2024-07-02 13:55:13.127509710 -0700
+diff -rupN /home/will/cmpt300/Backup/cmpt300/array_stats.h /home/will/cmpt300/linux-5.4.109/cmpt300/array_stats.h
+--- /home/will/cmpt300/Backup/cmpt300/array_stats.h	1969-12-31 16:00:00.000000000 -0800
++++ /home/will/cmpt300/linux-5.4.109/cmpt300/array_stats.h	2024-07-04 10:29:17.135695280 -0700
 @@ -0,0 +1,13 @@
 +// Define the array_stats struct for the array_stats syscall.
 +#ifndef _ARRAY_STATS_H_
@@ -85,233 +70,14 @@ diff -rupN /home/will/cmpt300/Backup/linux-5.4.109/cmpt300/array_stats.h /home/w
 +asmlinkage long sys_array_stats(struct array_stats *stats, long *data, long size);
 +
 +#endif
-Binary files /home/will/cmpt300/Backup/linux-5.4.109/cmpt300/array_stats_test and /home/will/cmpt300/linux-5.4.109/cmpt300/array_stats_test differ
-diff -rupN /home/will/cmpt300/Backup/linux-5.4.109/cmpt300/array_stats_test.c /home/will/cmpt300/linux-5.4.109/cmpt300/array_stats_test.c
---- /home/will/cmpt300/Backup/linux-5.4.109/cmpt300/array_stats_test.c	1969-12-31 16:00:00.000000000 -0800
-+++ /home/will/cmpt300/linux-5.4.109/cmpt300/array_stats_test.c	2024-06-23 17:48:09.916120257 -0700
-@@ -0,0 +1,214 @@
-+// Test application for the array_stats syscall.
-+
-+#include <stdio.h>
-+#include <unistd.h>
-+#include <sys/syscall.h>
-+#include <assert.h>
-+#include <stdlib.h>
-+#include <stdint.h>
-+#include <errno.h>
-+#include "array_stats.h"
-+
-+// Sys-call number:
-+#define _ARRAY_STATS_ 437
-+
-+/**
-+ * Prototypes
-+ */
-+void test_positive_few(void);
-+void test_negative_few(void);
-+void test_many(void);
-+void test_bad_addr(void);
-+static void do_syscall_working(long data[], long size);
-+static void do_syscall_failing(struct array_stats *stats, long data[], long size, long ret_code);
-+static void test_internal(_Bool success, int lineNum, char* argStr);
-+static void test_print_summary(void);
-+
-+
-+/***********************************************************
-+ * main()
-+ ***********************************************************/
-+int main(int argc, char *argv[])
-+{
-+	test_positive_few();
-+	test_negative_few();
-+	test_many();
-+
-+	test_bad_addr();
-+
-+	test_print_summary();
-+	return 0;
-+}
-+
-+
-+/***********************************************************
-+ * Testing routines for specific test
-+ ***********************************************************/
-+void test_positive_few()
-+{
-+	do_syscall_working((long[]){1}, 1);
-+	do_syscall_working((long[]){1, 2}, 2);
-+	do_syscall_working((long[]){1, 2, 3}, 3);
-+	do_syscall_working((long[]){0, 2, 4, 6}, 4);
-+	do_syscall_working((long[]){5, 3, 4, 1}, 4);
-+}
-+void test_negative_few()
-+{
-+	do_syscall_working((long[]){-1}, 1);
-+	do_syscall_working((long[]){-1, -2}, 2);
-+	do_syscall_working((long[]){-1, 2, 3}, 3);
-+	do_syscall_working((long[]){0, -2, 4, -6}, 4);
-+}
-+
-+void fill(long data[], long size)
-+{
-+	for (int i = 0; i < size; i++) {
-+		data[i] = rand();
-+		if (i % 2 == 0) {
-+			data[i] *= -1;
-+		}
-+	}
-+}
-+#define MEG (1024*1024)
-+void test_many()
-+{
-+	for (int i = 1; i <= 5; i++) {
-+		long size = MEG * i;
-+		long *data = malloc(sizeof(data[0]) * size);
-+		fill(data, size);
-+		do_syscall_working(data, size);
-+		free(data);
-+	}
-+}
-+
-+void test_bad_addr()
-+{
-+	struct array_stats stats;
-+	// 0 or negative sizes
-+	do_syscall_failing(&stats, (long[]){1}, 0, EINVAL);
-+	do_syscall_failing(&stats, (long[]){1}, -1, EINVAL);
-+	do_syscall_failing(&stats, (long[]){1}, -10000, EINVAL);
-+
-+	// Bad data pointers
-+	do_syscall_failing(&stats, NULL, 1, EFAULT);
-+	do_syscall_failing(&stats, (long*)1LL, 1, EFAULT);
-+	do_syscall_failing(&stats, (long*)123456789012345689LL, 1, EFAULT);
-+
-+	// Bad size (read off end)
-+	do_syscall_failing(&stats, (long[]){1}, 10*MEG, EFAULT);
-+
-+	// Bad stats pointers, or read-only memory
-+	do_syscall_failing(NULL, (long[]){1}, 1, EFAULT);
-+	do_syscall_failing((void*)1, (long[]){1}, 1, EFAULT);
-+	do_syscall_failing((void*)test_bad_addr, (long[]){1}, 1, EFAULT);
-+}
-+
-+
-+
-+/***********************************************************
-+ * Custom testing framework
-+ ***********************************************************/
-+// Track results:
-+static int numTests = 0;
-+static int numTestPassed = 0;
-+
-+static int current_syscall_test_num = 0;
-+static int last_syscall_test_num_failed = -1;
-+static int num_syscall_tests_failed = 0;
-+
-+// Macro to allow us to get the line number, and argument's text:
-+#define TEST(arg) test_internal((arg), __LINE__, #arg)
-+
-+// Actual function used to check success/failure:
-+static void test_internal(_Bool success, int lineNum, char* argStr)
-+{
-+	numTests++;
-+	if (!success) {
-+		if (current_syscall_test_num != last_syscall_test_num_failed) {
-+			last_syscall_test_num_failed = current_syscall_test_num;
-+			num_syscall_tests_failed++;
-+		}
-+		printf("-------> ERROR %4d: test on line %d failed: %s\n",
-+				numTestPassed, lineNum, argStr);
-+	} else {
-+		numTestPassed++;
-+	}
-+}
-+
-+static void test_print_summary(void)
-+{
-+	printf("\nExecution finished.\n");
-+	printf("%4d/%d tests passed.\n", numTestPassed, numTests);
-+	printf("%4d/%d tests FAILED.\n", numTests - numTestPassed, numTests);
-+	printf("%4d/%d unique sys-call testing configurations FAILED.\n", num_syscall_tests_failed, current_syscall_test_num);
-+}
-+
-+
-+/***********************************************************
-+ * Routines to double check array answers
-+ ***********************************************************/
-+static long find_max(long data[], long size)
-+{
-+	long max = data[0];
-+	for (int i = 0; i < size; i++) {
-+		if (data[i] > max) {
-+			max = data[i];
-+		}
-+	}
-+	return max;
-+}
-+static long find_min(long data[], long size)
-+{
-+	long min = data[0];
-+	for (int i = 0; i < size; i++) {
-+		if (data[i] < min) {
-+			min = data[i];
-+		}
-+	}
-+	return min;
-+}
-+static long find_sum(long data[], long size)
-+{
-+	long sum = 0;
-+	for (int i = 0; i < size; i++) {
-+		sum += data[i];
-+	}
-+	return sum;
-+}
-+
-+/***********************************************************
-+ * Functions to actually make the sys-call and test results
-+ ***********************************************************/
-+static int do_syscall(struct array_stats *stats, long *data, long size)
-+{
-+	current_syscall_test_num++;
-+	printf("\nTest %d: ..Diving to kernel level\n", current_syscall_test_num);
-+	int result = syscall(_ARRAY_STATS_, stats, data, size);
-+	int my_errno = errno;
-+	printf("..Rising to user level w/ result = %d", result);
-+	if (result < 0) {
-+		printf(", errno = %d", my_errno);
-+	} else {
-+		my_errno = 0;
-+	}
-+	printf("\n");
-+	return my_errno;
-+
-+}
-+static void do_syscall_working(long data[], long size)
-+{
-+	struct array_stats stats;
-+	int result = do_syscall(&stats, data, size);
-+	printf("Stats: min = %ld, max = %ld, sum = %ld\n",
-+			stats.min, stats.max, stats.sum);
-+
-+	TEST(result == 0);
-+	TEST(stats.min == find_min(data, size));
-+	TEST(stats.max == find_max(data, size));
-+	TEST(stats.sum == find_sum(data, size));
-+}
-+static void do_syscall_failing(struct array_stats *stats, long data[], long size, long ret_code)
-+{
-+	int result = do_syscall(stats, data, size);
-+	TEST(result == ret_code);
-+}
-diff -rupN /home/will/cmpt300/Backup/linux-5.4.109/cmpt300/Makefile /home/will/cmpt300/linux-5.4.109/cmpt300/Makefile
---- /home/will/cmpt300/Backup/linux-5.4.109/cmpt300/Makefile	1969-12-31 16:00:00.000000000 -0800
-+++ /home/will/cmpt300/linux-5.4.109/cmpt300/Makefile	2024-07-02 13:55:13.127509710 -0700
+diff -rupN /home/will/cmpt300/Backup/cmpt300/Makefile /home/will/cmpt300/linux-5.4.109/cmpt300/Makefile
+--- /home/will/cmpt300/Backup/cmpt300/Makefile	1969-12-31 16:00:00.000000000 -0800
++++ /home/will/cmpt300/linux-5.4.109/cmpt300/Makefile	2024-07-04 10:29:17.139695420 -0700
 @@ -0,0 +1 @@
 +obj-y := array_stats.o process_ancestors.o
-diff -rupN /home/will/cmpt300/Backup/linux-5.4.109/cmpt300/process_ancestors.c /home/will/cmpt300/linux-5.4.109/cmpt300/process_ancestors.c
---- /home/will/cmpt300/Backup/linux-5.4.109/cmpt300/process_ancestors.c	1969-12-31 16:00:00.000000000 -0800
-+++ /home/will/cmpt300/linux-5.4.109/cmpt300/process_ancestors.c	2024-07-02 13:55:13.127509710 -0700
+diff -rupN /home/will/cmpt300/Backup/cmpt300/process_ancestors.c /home/will/cmpt300/linux-5.4.109/cmpt300/process_ancestors.c
+--- /home/will/cmpt300/Backup/cmpt300/process_ancestors.c	1969-12-31 16:00:00.000000000 -0800
++++ /home/will/cmpt300/linux-5.4.109/cmpt300/process_ancestors.c	2024-07-03 15:39:50.000000000 -0700
 @@ -0,0 +1,61 @@
 +#include <linux/kernel.h>
 +#include <linux/syscalls.h>
@@ -374,9 +140,9 @@ diff -rupN /home/will/cmpt300/Backup/linux-5.4.109/cmpt300/process_ancestors.c /
 +	printk("\n --- 5 --- \n");
 +	return 0;
 +}
-diff -rupN /home/will/cmpt300/Backup/linux-5.4.109/cmpt300/process_ancestors.h /home/will/cmpt300/linux-5.4.109/cmpt300/process_ancestors.h
---- /home/will/cmpt300/Backup/linux-5.4.109/cmpt300/process_ancestors.h	1969-12-31 16:00:00.000000000 -0800
-+++ /home/will/cmpt300/linux-5.4.109/cmpt300/process_ancestors.h	2024-07-02 13:55:13.135508335 -0700
+diff -rupN /home/will/cmpt300/Backup/cmpt300/process_ancestors.h /home/will/cmpt300/linux-5.4.109/cmpt300/process_ancestors.h
+--- /home/will/cmpt300/Backup/cmpt300/process_ancestors.h	1969-12-31 16:00:00.000000000 -0800
++++ /home/will/cmpt300/linux-5.4.109/cmpt300/process_ancestors.h	2024-07-04 10:29:17.139695420 -0700
 @@ -0,0 +1,21 @@
 +// Structure to hold values returned by process_ancestors sys-call
 +#ifndef _PROCESS_ANCESTORS_H
@@ -399,31 +165,37 @@ diff -rupN /home/will/cmpt300/Backup/linux-5.4.109/cmpt300/process_ancestors.h /
 +                                      long *num_filled);
 +
 +#endif
-diff -rupN /home/will/cmpt300/Backup/linux-5.4.109/Makefile /home/will/cmpt300/linux-5.4.109/Makefile
---- /home/will/cmpt300/Backup/linux-5.4.109/Makefile	2024-06-22 14:10:11.831670476 -0700
-+++ /home/will/cmpt300/linux-5.4.109/Makefile	2024-07-02 13:55:13.167502834 -0700
+diff -rupN /home/will/cmpt300/Backup/cs300/cs300_test.c /home/will/cmpt300/linux-5.4.109/cs300/cs300_test.c
+--- /home/will/cmpt300/Backup/cs300/cs300_test.c	1969-12-31 16:00:00.000000000 -0800
++++ /home/will/cmpt300/linux-5.4.109/cs300/cs300_test.c	2024-07-04 10:43:41.870614282 -0700
+@@ -0,0 +1,13 @@
++#include <linux/kernel.h>
++#include <linux/syscalls.h>
++// Implement a HelloWorld system call
++// Argument is passed from call in user space.
++SYSCALL_DEFINE1(cs300_test, int, argument)
++{
++long result = 0;
++printk("Hello World!\n");
++printk("--syscall argument %d\n", argument);
++result = argument + 1;
++printk("--returning %d + 1 = %ld\n", argument, result);
++return result;
++}
+diff -rupN /home/will/cmpt300/Backup/cs300/Makefile /home/will/cmpt300/linux-5.4.109/cs300/Makefile
+--- /home/will/cmpt300/Backup/cs300/Makefile	1969-12-31 16:00:00.000000000 -0800
++++ /home/will/cmpt300/linux-5.4.109/cs300/Makefile	2024-07-04 10:45:25.028828382 -0700
+@@ -0,0 +1 @@
++obj-y := cs300_test.o
+diff -rupN /home/will/cmpt300/Backup/Makefile /home/will/cmpt300/linux-5.4.109/Makefile
+--- /home/will/cmpt300/Backup/Makefile	2021-03-30 05:35:30.000000000 -0700
++++ /home/will/cmpt300/linux-5.4.109/Makefile	2024-07-04 10:29:17.235698758 -0700
 @@ -1036,7 +1036,7 @@ PHONY += prepare0
  export MODORDER := $(extmod-prefix)modules.order
  
  ifeq ($(KBUILD_EXTMOD),)
--core-y		+= kernel/ certs/ mm/ fs/ ipc/ security/ crypto/ block/ cs300/
+-core-y		+= kernel/ certs/ mm/ fs/ ipc/ security/ crypto/ block/
 +core-y		+= kernel/ certs/ mm/ fs/ ipc/ security/ crypto/ block/ cs300/ cmpt300/
  
  vmlinux-dirs	:= $(patsubst %/,%,$(filter %/, $(init-y) $(init-m) \
  		     $(core-y) $(core-m) $(drivers-y) $(drivers-m) \
-diff -rupN /home/will/cmpt300/Backup/linux-5.4.109/Makefile.rej /home/will/cmpt300/linux-5.4.109/Makefile.rej
---- /home/will/cmpt300/Backup/linux-5.4.109/Makefile.rej	1969-12-31 16:00:00.000000000 -0800
-+++ /home/will/cmpt300/linux-5.4.109/Makefile.rej	2024-06-22 14:09:36.455817514 -0700
-@@ -0,0 +1,11 @@
-+--- linux-5.4.109/Makefile	2021-03-30 05:35:30.000000000 -0700
-++++ Makefile	2024-06-21 21:21:27.855930000 -0700
-+@@ -1036,7 +1036,7 @@ PHONY += prepare0
-+ export MODORDER := $(extmod-prefix)modules.order
-+ 
-+ ifeq ($(KBUILD_EXTMOD),)
-+-core-y		+= kernel/ certs/ mm/ fs/ ipc/ security/ crypto/ block/
-++core-y		+= kernel/ certs/ mm/ fs/ ipc/ security/ crypto/ block/ cs300/
-+ 
-+ vmlinux-dirs	:= $(patsubst %/,%,$(filter %/, $(init-y) $(init-m) \
-+ 		     $(core-y) $(core-m) $(drivers-y) $(drivers-m) \
-Binary files /home/will/cmpt300/Backup/linux-5.4.109/tools/objtool/objtool and /home/will/cmpt300/linux-5.4.109/tools/objtool/objtool differ
