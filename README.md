@@ -1,4 +1,3 @@
-# File Descriptions 
 ## Member Contributions
 
 Allen Chen:
@@ -17,6 +16,8 @@ Roy Shi:
 - Wrote process_ancestors.c
 - Wrote process_ancestors.h
 - Wrote process_ancestors_test.c
+
+## File Descriptions 
 
 ### cmpt300 
 
