@@ -1,4 +1,22 @@
 # File Descriptions 
+## Member Contributions
+
+Allen Chen:
+
+- Wrote array_stats.c
+- Wrote array_stats.h
+  
+William Chen:
+
+- Testing
+- Debugging
+- Generated patching
+
+Roy Shi:
+
+- Wrote process_ancestors.c
+- Wrote process_ancestors.h
+- Wrote process_ancestors_test.c
 
 ### cmpt300 
 
